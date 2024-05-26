@@ -88,6 +88,10 @@ export default function Rightbar({profile}) {
                <h4 className="rightbarTitle" >User Information</h4>
                <div className="rightbarInfo">
                 <div className="rightbarInfoItem">
+                    <span className="rightbarInfoKey">Name:</span>
+                    <span className="rightbarInfoValue">Willow Smith</span>
+                </div>
+                <div className="rightbarInfoItem">
                     <span className="rightbarInfoKey">City:</span>
                     <span className="rightbarInfoValue">New York</span>
                 </div>
@@ -108,31 +112,31 @@ export default function Rightbar({profile}) {
                     </div>
                     <div className="rightbarFollowing">
                         <img src="../src/images/person/2.jpeg" alt="Person following" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Jaden Smith</span>
+                        <span className="rightbarFollowingName">June May</span>
                     </div>
                     <div className="rightbarFollowing">
                         <img src="../src/images/person/3.jpeg" alt="Person following" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Jaden Smith</span>
+                        <span className="rightbarFollowingName">nancy Adiola</span>
                     </div>
                     <div className="rightbarFollowing">
                         <img src="../src/images/person/4.jpeg" alt="Person following" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Jaden Smith</span>
+                        <span className="rightbarFollowingName">Rosy Roselvet</span>
                     </div>
                     <div className="rightbarFollowing">
                         <img src="../src/images/person/5.jpeg" alt="Person following" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Jaden Smith</span>
+                        <span className="rightbarFollowingName">Mary Mirriam</span>
                     </div>
                     <div className="rightbarFollowing">
                         <img src="../src/images/person/6.jpeg" alt="Person following" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Jaden Smith</span>
+                        <span className="rightbarFollowingName">Jane Doe</span>
                     </div>
                     <div className="rightbarFollowing">
                         <img src="../src/images/person/9.jpeg" alt="Person following" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Jaden Smith</span>
+                        <span className="rightbarFollowingName">Tracy Johnson</span>
                     </div>
                     <div className="rightbarFollowing">
                         <img src="../src/images/person/8.jpeg" alt="Person following" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Jaden Smith</span>
+                        <span className="rightbarFollowingName">Joe Biden</span>
                     </div>
                 </div>
             </>
