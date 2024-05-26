@@ -1,81 +1,135 @@
 import streamlit as st
-from dotenv import load_dotenv
 import os
 import replicate
-from utils import debounce_run_function
+from dotenv import load_dotenv
+import os
 
-# Define the pre-prompt
-PRE_PROMPT = "You are a helpful personal assistant. You do not respond as 'User' or pretend to be 'User'. You only respond once as a Personal Assistant."
-
-# Load environment variables
+# Load environment variables from .env file
 load_dotenv()
+from utils import debounce_replicate_run
 
-# Get the Replicate API token from the environment variable
-try:
-    REPLICATE_API_TOKEN = os.getenv('REPLICATE_API_TOKEN')
-    if not REPLICATE_API_TOKEN:
-        raise ValueError("Error loading API token")
-except Exception as e:
-    st.error(str(e))
-    REPLICATE_API_TOKEN = st.text_input("Enter your Replicate API token:")
+REPLICATE_API_TOKEN = os.getenv("REPLICATE_API_TOKEN")
+REPLICATE_MODEL_ENDPOINTS = {
+    'LLaMA2-7B': os.getenv('REPLICATE_MODEL_ENDPOINT7B', default=''),
+    'LLaMA2-13B': os.getenv('REPLICATE_MODEL_ENDPOINT13B', default=''),
+    'LLaMA2-70B': os.getenv('REPLICATE_MODEL_ENDPOINT70B', default='')
+}
 
-# Initialize Replicate client with the API token
-if REPLICATE_API_TOKEN:
-    replicate.Client(api_token=REPLICATE_API_TOKEN)
 
-# Define the debounced function to get a response from the model
-@debounce_run_function
-def get_response(prompt):
-    model = st.session_state['model']
-    response = replicate.run(
-        model,
-        input={"prompt": f"{PRE_PROMPT} {prompt}"}
-    )
-    return response
+print("The API TOKEN IS",REPLICATE_API_TOKEN)
+print("The MODEL ENDPOINTS ARE",REPLICATE_MODEL_ENDPOINTS)
 
-# Main function for the Streamlit app
-def main():
-    st.title("Blogging Assistant Chatbot")
+# Set Pre-prompt
+PRE_PROMPT = "You are a helpful assistant. You do not respond as 'User' or pretend to be 'User'. You only respond once as Assistant."
+
+# Set initial page configuration
+st.set_page_config(page_title="LLaMA2 Chatbot", page_icon=":left_speech_bubble:", layout="wide")
+
+def render_app():
+    # Set up containers
+    response_container = st.container()
+    container = st.container()
+
+    # Set up Session State variables
+    st.session_state.setdefault('chat_dialogue', [])
+    st.session_state.setdefault('llm', REPLICATE_MODEL_ENDPOINTS['LLaMA2-70B'])
+    st.session_state.setdefault('temperature', 0.1)
+    st.session_state.setdefault('top_p', 0.9)
+    st.session_state.setdefault('max_seq_len', 512)
+    st.session_state.setdefault('pre_prompt', PRE_PROMPT)
+    st.session_state.setdefault('string_dialogue', '')
+
+    # Set up left sidebar
+    st.sidebar.header("Blog Chatbot 💬")
     
-    # Initialize session state variables
-    if 'history' not in st.session_state:
-        st.session_state['history'] = []
-    
-    if 'model' not in st.session_state:
-        st.session_state['model'] = "a16z-infra/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea"
-    
-    # User input for prompt and model selection
-    prompt = st.text_input("Enter your prompt:")
-    model_option = st.selectbox(
-        "Choose your model",
-        ["Llama2-7B", "Llama2-13B"]
-    )
-    
-    # Update the selected model
-    if model_option == 'Llama2-7B':
-        st.session_state['model'] = 'a16z-infra/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea'
-    elif model_option == 'Llama2-13B':
-        st.session_state['model'] = 'a16z-infra/llama13b-v2-chat:df7690f1994d94e96ad9d568eac121aecf50684a0b0963b25a41cc40061269e5'
-    
-    # Get response on button click
-    if st.button("Get Response"):
-        if REPLICATE_API_TOKEN:
-            response = get_response(prompt)
-            st.session_state['history'].append({"user": prompt, "bot": response})
-        else:
-            st.error("Please enter a valid Replicate API token.")
-    
+     #container for the chat history
+    response_container = st.container()
+    #container for the user's text input
+    container = st.container()
+    #Set up/Initialize Session State variables:
+    if 'chat_dialogue' not in st.session_state:
+        st.session_state['chat_dialogue'] = []
+    if 'llm' not in st.session_state:
+        #st.session_state['llm'] = REPLICATE_MODEL_ENDPOINT13B
+        st.session_state['llm'] = 'LLaMA2-70B'
+    if 'temperature' not in st.session_state:
+        st.session_state['temperature'] = 0.1
+    if 'top_p' not in st.session_state:
+        st.session_state['top_p'] = 0.9
+    if 'max_seq_len' not in st.session_state:
+        st.session_state['max_seq_len'] = 512
+    if 'pre_prompt' not in st.session_state:
+        st.session_state['pre_prompt'] = PRE_PROMPT
+    if 'string_dialogue' not in st.session_state:
+        st.session_state['string_dialogue'] = ''
+
+    #Dropdown menu to select the model edpoint:
+    selected_option = st.sidebar.selectbox('Choose a LLaMA2 model:', ['LLaMA2-70B', 'LLaMA2-13B', 'LLaMA2-7B'], key='model')
+    if selected_option == 'LLaMA2-7B':
+        st.session_state['llm'] = 'LLaMA2-7B'
+    elif selected_option == 'LLaMA2-13B':
+        st.session_state['llm'] = 'LLaMA2-13B'
+    else:
+        st.session_state['llm'] = 'LLaMA2-70B'
+    #Model hyper parameters:
+    st.session_state['temperature'] = st.sidebar.slider('Temperature:', min_value=0.01, max_value=5.0, value=0.1, step=0.01)
+    st.session_state['top_p'] = st.sidebar.slider('Top P:', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
+    st.session_state['max_seq_len'] = st.sidebar.slider('Max Sequence Length:', min_value=64, max_value=4096, value=2048, step=8)
+
+    NEW_P = st.sidebar.text_area('Prompt before the chat starts. Edit here if desired:', PRE_PROMPT, height=60)
+    if NEW_P != PRE_PROMPT and NEW_P != "" and NEW_P != None:
+        st.session_state['pre_prompt'] = NEW_P + "\n\n"
+    else:
+        st.session_state['pre_prompt'] = PRE_PROMPT
+
+    btn_col1, btn_col2 = st.sidebar.columns(2)
+
+     # Acknowledgment button
+    if st.sidebar.button("Ack"):
+        st.write("[Go back to the blogging app](https://your-blogging-app-url.com)")
+
+   
     # Display chat history
-    for chat in st.session_state['history']:
-        st.write(f"User: {chat['user']}")
-        st.write(f"Bot: {chat['bot']}")
-    
-    # "Ack" button to navigate back to the blog app
-    if st.button("Ack"):
-        st.write("Navigating back to the blog app...")
-        # Replace this URL with the actual URL of blog 
-        st.markdown("[Back to Blog App](https://your-blog-app-url.com)", unsafe_allow_html=True)
+    for message in st.session_state.chat_dialogue:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
 
-# Run the main function
+    # User input
+    if prompt := st.chat_input("Ask a question here to LLaMA2"):
+        st.session_state.chat_dialogue.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+        
+        # Assistant response
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            full_response = ""
+            string_dialogue = st.session_state['pre_prompt']
+            for dict_message in st.session_state.chat_dialogue:
+                speaker = "User" if dict_message["role"] == "user" else "Assistant"
+                try:
+                    string_dialogue += f"{speaker}: {dict_message['content']}\n\n"
+                except KeyError:
+                # Handle the case where 'content' key is missing (optional: log a message)
+                    pass
+
+            output = debounce_replicate_run(
+                st.session_state['llm'],
+                string_dialogue + "Assistant: ",
+                st.session_state['max_seq_len'],
+                st.session_state['temperature'],
+                st.session_state['top_p'],
+                REPLICATE_API_TOKEN,
+                REPLICATE_MODEL_ENDPOINTS[st.session_state['llm']]
+            )
+            for item in output:
+                full_response += item
+                message_placeholder.markdown(full_response + "▌")
+            message_placeholder.markdown(full_response)
+        st.session_state.chat_dialogue.append({"role": "assistant", "content": full_response})
+
+def main():
+    render_app()
+
 if __name__ == "__main__":
     main()
