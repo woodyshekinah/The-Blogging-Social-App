@@ -21,3 +21,10 @@ img {
   padding: 8px;
  
 }
+
+.delete {
+  margin-left: 500px;
+  color: white;
+  background-color: red;
+  padding: 0 20px;
+}
