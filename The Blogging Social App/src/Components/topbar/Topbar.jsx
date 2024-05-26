@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Topbar.css"
 import { Search, Person, Chat, Notifications } from '@mui/icons-material'
+import SearchBar from '../search'
 
 export default function Topbar() {
     return (
@@ -10,30 +11,26 @@ export default function Topbar() {
             </div>
             <div className="topbarCenter">
                 <div className="searchbar">
-                    <Search className='searchIcon'/>
-                    <input placeholder='Search for friend, post or video' className="searchInput" />
+                  <Search />
                 </div>
             </div>
             <div className="topbarRight">
                 <div className="topbarLinks">
-                    <span className="topbarLink">HomePage</span>
-                    <span className="topbarLink">Timeline</span>
                 </div>
                 <div className="topbarIcons">
                     <div className="topbarIconItem">
-                        <Person />
-                        <span className="topbarIconBadge">1</span>
+                    <a href="/profile"> <Person /></a>
                     </div>
-                    <div className="topbarIconItem">
+                    {/* <div className="topbarIconItem">
                         <Chat />
-                        <span className="topbarIconBadge">2</span>
+                        <span className="topbarIconBadge"></span>
                     </div>
                     <div className="topbarIconItem">
                         <Notifications />
-                        <span className="topbarIconBadge">1</span>
-                    </div>
+                        <span className="topbarIconBadge"></span>
+                    </div> */}
                 </div>
-                <img src='../src/images/person/1.jpeg' alt='an image of a girl' className='topbarImg'/>
+               <a href="/login"><img src='../src/images/person/1.jpeg' alt='an image of a girl' className='topbarImg'/></a>
             </div>
         </div>
     )
