@@ -10,6 +10,7 @@ export default function Feed() {
         <div className="feedWrapper">
             <Share />
             <Post />
+            {/* <Post />
             <Post />
             <Post />
             <Post />
@@ -19,8 +20,7 @@ export default function Feed() {
             <Post />
             <Post />
             <Post />
-            <Post />
-            <Post />
+            <Post /> */}
               
         </div>
     </div>

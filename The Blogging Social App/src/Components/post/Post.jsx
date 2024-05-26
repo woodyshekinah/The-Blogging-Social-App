@@ -1,46 +1,83 @@
 import React from "react";
 import './post.css'
-import {MoreVert} from '@mui/icons-material'
 import {useState} from "react"
 
-export default function Post() {
 
-    const [like, setLike] = useState(50)
-    const [isLiked, setIsLiked] = useState(false)
-
-    const likeHandler =()=>{
-        setLike(isLiked ? like-1 : like+1 )
-        setIsLiked(!isLiked)
+function Post() {
+  const [posts, setPosts] = useState([]);
+  const [newPost, setNewPost] = useState('');
+  const [showComments, setShowComments] = useState(false);
+  
+  const handleNewPostChange = (e) => {
+    setNewPost(e.target.value);
+  };
+  
+  const handleAddPost = () => {
+    if (newPost.trim() !== '') {
+      setPosts([...posts, { content: newPost, likes: 0, comments: [] }]);
+      setNewPost('');
     }
-    
-    return (
-        <div className="post">
-            <div className="postWrapper">
-                <div className="postTop">
-                    <div className="postTopLeft">
-                        <img className="postProfileImg" src="../src/images/person/1.jpeg" alt="1st post" />
-                        <span className="postUsername">Willow Smith</span>
-                        <span className="postDate">5 mins ago</span>
-                    </div>
-                    <div className="postTopRight">
-                        <MoreVert />
-                    </div>
-                </div>
-                <div className="postCenter">
-                    <span className="postText">This is my first post :)</span>
-                    <img className="postImg" src="../src/images/post/1.jpeg" alt="Ist Post" />
-                </div>
-                <div className="postBottom">
-                    <div className="postBottomLeft">
-                        <img className="likeIcon" src="../src/images/like.png" alt="Like icon" onClick={likeHandler} />
-                        <img className="likeIcon" src="../src/images/heart.png" alt="Heart icon" onClick={likeHandler}/>
-                        <span className="postlikeCounter">{like} people liked</span>
-                    </div>
-                    <div className="postBottomRight">
-                        <span className="postCommentText">9 comments</span>
-                    </div>
-                </div>
+  };
+  
+  const handleLikePost = (index) => {
+    const updatedPosts = [...posts];
+    updatedPosts[index].likes++;
+    setPosts(updatedPosts);
+  };
+  
+  const handleAddComment = (index, comment) => {
+    const updatedPosts = [...posts];
+    updatedPosts[index].comments.push(comment);
+    setPosts(updatedPosts);
+  };
+  
+  const toggleComments = () => {
+    setShowComments(!showComments);
+  };
+  
+  return (
+    <div>
+      <h1>Posts</h1>
+      <div>
+        <input
+          type="text"
+          placeholder="Write a new post..."
+          value={newPost}
+          onChange={handleNewPostChange}
+        />
+        <button onClick={handleAddPost}>Add Post</button>
+      </div>
+      <div>
+        {posts.map((post, index) => (
+          <div key={index} style={{ border: '1px solid black', margin: '10px', padding: '10px' }}>
+            <p>{post.content}</p>
+            <img src='../src/images/like.png' onClick={() => handleLikePost(index)} />
+                <span className="like">({post.likes}) people have liked your post</span>
+            <div>
+              <input type="text" placeholder="Add a comment..." />
+              <button onClick={() => handleAddComment(index, 'Sample comment')}>Add Comment</button>
             </div>
-        </div>
-    )
+            <div>
+              <button onClick={toggleComments}>
+                {showComments ? 'Hide Comments' : 'Show Comments'}
+              </button>
+              {showComments && (
+                <div>
+                  <h3>Comments</h3>
+                  <ul>
+                    {post.comments.map((comment, i) => (
+                      <li key={i}>{comment}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
+
+export default Post;
+
