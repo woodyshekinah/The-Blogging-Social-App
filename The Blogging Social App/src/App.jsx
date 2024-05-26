@@ -1,8 +1,9 @@
 import React from 'react'
 import Home from './Pages/home/home'
+import Profile from './Pages/profile/Profile'
 
 function App() {
-    return <Home />
+    return <Profile />
 }
 
 export default App
