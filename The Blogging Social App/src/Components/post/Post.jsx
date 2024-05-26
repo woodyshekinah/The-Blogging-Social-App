@@ -3,6 +3,7 @@ import './post.css'
 import {MoreVert} from '@mui/icons-material'
 
 export default function Post() {
+    
     return (
         <div className="post">
             <div className="postWrapper">
@@ -17,7 +18,7 @@ export default function Post() {
                     </div>
                 </div>
                 <div className="postCenter">
-                    <span className="postText">Hey! It's my first post :)</span>
+                    <span className="postText">This is my first post :)</span>
                     <img className="postImg" src="../src/images/post/1.jpeg" alt="Ist Post" />
                 </div>
                 <div className="postBottom">
