@@ -5,7 +5,7 @@ import Login from './Pages/login/Login'
 import Register from './Pages/register/Register'
 
 function App() {
-    return <Register />
+    return <Home />
 }
 
 export default App
