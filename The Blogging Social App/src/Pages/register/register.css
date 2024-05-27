@@ -12,6 +12,12 @@
     height: 70%;
     display: flex;
 }
+p a{
+    text-decoration: none;
+}
+button a{
+    text-decoration: none;
+}
 
 .loginLeft, .loginRight {
     flex: 1;

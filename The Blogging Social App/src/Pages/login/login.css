@@ -6,6 +6,17 @@
     align-items: center;
     justify-content: center;
 }
+p a{
+    text-decoration: none;
+    color: black;
+}
+p a:hover{
+    color:green;
+}
+button a{
+    text-decoration: none;
+    color: white;
+}
 
 .loginWrapper {
     width: 70%;
