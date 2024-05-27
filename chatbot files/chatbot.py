@@ -86,7 +86,7 @@ def render_app():
 
      # Acknowledgment button
     if st.sidebar.button("Ack"):
-        st.write("[Go back to the blogging app](https://your-blogging-app-url.com)")
+        st.write("[Go back to the blogging app](https://bloggingsocialapp10.vercel.app/)")
 
    
     # Display chat history

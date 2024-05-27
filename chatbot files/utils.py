@@ -5,7 +5,7 @@ import logging
 
 # Initialize debounce variables
 last_call_time = 0
-debounce_interval = 2  # Set the debounce interval (in seconds) to your desired value
+debounce_interval = 2  # Set the debounce interval (in seconds) 
 
 def debounce_replicate_run(llm, prompt, max_len, temperature, top_p, API_TOKEN,model_reference):
     global last_call_time
