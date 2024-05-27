@@ -1,5 +1,5 @@
 .topbarContainer {
-    height: 50px;
+    height: 90px;
     width: 100%;
     background-color: #1877f2;
     display: flex;
@@ -7,6 +7,61 @@
     position: sticky;
     top: 0;
 }
+/* App.css */
+
+/* General App Styles */
+.App {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0 auto;
+   
+}
+
+/* SearchBar Styles */
+.search-bar {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #007bff;
+}
+
+/* Tag List Styles */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.tag {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+    background-color: #0056b3;
+}
+
+.tag-list p {
+    font-size: 16px;
+    color: #777;
+}
+
 
 .topbarLeft {
     flex: 3;
@@ -27,14 +82,6 @@ span a{
     flex: 5;
 }
 
- .searchbar {
-    width: 100%;
-    height: 30px;
-    background-color: white;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-}
 
 .searchIcon {
     font-size: 20px !important;
