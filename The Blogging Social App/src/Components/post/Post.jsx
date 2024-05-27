@@ -1,104 +1,184 @@
 import React from "react";
 import './post.css'
+import {MoreVert} from '@mui/icons-material'
 import {useState} from "react"
 
-function Post() {
-  const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState('');
-  const [showComments, setShowComments] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  
-  const handleNewPostChange = (e) => {
-    setNewPost(e.target.value);
-  };
-  
-  const handleAddPost = () => {
-    if (newPost.trim() !== '') {
-      setPosts([...posts, { content: newPost, likes: 0, comments: [], tags: [] }]);
-      setNewPost('');
+export default function Post() {
+
+    const [like, setLike] = useState(50)
+    const [isLiked, setIsLiked] = useState(false)
+
+    const likeHandler =()=>{
+        setLike(isLiked ? like-1 : like+1 )
+        setIsLiked(!isLiked)
     }
-  };
-  
-  const handleLikePost = (index) => {
-    const updatedPosts = [...posts];
-    updatedPosts[index].likes++;
-    setPosts(updatedPosts);
-  };
-  
-  const handleAddComment = (index, comment) => {
-    const updatedPosts = [...posts];
-    updatedPosts[index].comments.push(comment);
-    setPosts(updatedPosts);
-  };
-  
-  const toggleComments = () => {
-    setShowComments(!showComments);
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleDeletePost = (index) => {
-    const updatedPosts = [...posts];
-    updatedPosts.splice(index, 1);
-    setPosts(updatedPosts);
-  };
-  
-  const filteredPosts = posts.filter(post => {
-    return post.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-  });
-  
-  return (
-    <div>
-      <h1>Posts</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="Write a new post..."
-          value={newPost}
-          onChange={handleNewPostChange}
-        />
-        <button onClick={handleAddPost}>Add Post</button>
-      </div>
-      <div>
-
-      </div>
-      <div>
-        {filteredPosts.map((post, index) => (
-          <div key={index} style={{ border: '1px solid black', margin: '10px', padding: '10px' }}>
-            <p>{post.content}</p>
-            <img src="../src/images/like.png" onClick={() => handleLikePost(index)}/>
-                <span className="like">{post.likes} people liked your post</span>
-            
-            <div>
-              <input type="text" placeholder="Add a comment..." />
-              <button onClick={() => handleAddComment(index, 'Sample comment')}>Add Comment</button>
-            </div>
-            <div>
-              <button onClick={toggleComments}>
-                {showComments ? 'Hide Comments' : 'Show Comments'}
-              </button>
-              <button className="delete" onClick={() => handleDeletePost(index)}>Delete post</button>
-              {showComments && (
-                <div>
-                  <h3>Comments</h3>
-                  <ul>
-                    {post.comments.map((comment, i) => (
-                      <li key={i}>{comment}</li>
-                    ))}
-                  </ul>
+    
+    return (
+        <>
+        <div className="post">
+            <div className="postWrapper">
+                <div className="postTop">
+                    <div className="postTopLeft">
+                        <img className="postProfileImg" src="../src/images/person/1.jpeg" alt="1st post" />
+                        <span className="postUsername">Willow Smith</span>
+                        <span className="postDate">5 mins ago</span>
+                    </div>
+                    <div className="postTopRight">
+                        <MoreVert />
+                    </div>
                 </div>
-              )}
+                <div className="postCenter">
+                    <span className="postText">This is my first post :)</span>
+                    <img className="postImg" src="../src/images/post/10.jpeg" alt="Ist Post" />
+                </div>
+                <div className="postBottom">
+                    <div className="postBottomLeft">
+                        <img className="likeIcon" src="../src/images/like.png" alt="Like icon" onClick={likeHandler} />
+                        <img className="likeIcon" src="../src/images/heart.png" alt="Heart icon" onClick={likeHandler}/>
+                        <span className="postlikeCounter">{like} people liked</span>
+                    </div>
+                    <div className="postBottomRight">
+                        <span className="postCommentText">9 comments</span>
+                        
+                        
+                    </div>
+                </div>
             </div>
-          </div>
-        ))}
-      </div>
+        </div>
+
+
+<div className="post">
+<div className="postWrapper">
+    <div className="postTop">
+        <div className="postTopLeft">
+            <img className="postProfileImg" src="../src/images/person/9.jpeg" alt="1st post" />
+            <span className="postUsername">Willow Smith</span>
+            <span className="postDate">5 mins ago</span>
+        </div>
+        <div className="postTopRight">
+            <MoreVert />
+        </div>
     </div>
-  );
+    <div className="postCenter">
+        <span className="postText">This is my first post :)</span>
+        <img className="postImg" src="../src/images/post/9.jpeg" alt="Ist Post" />
+    </div>
+    <div className="postBottom">
+        <div className="postBottomLeft">
+            <img className="likeIcon" src="../src/images/like.png" alt="Like icon" onClick={likeHandler} />
+            <img className="likeIcon" src="../src/images/heart.png" alt="Heart icon" onClick={likeHandler}/>
+            <span className="postlikeCounter">{like} people liked</span>
+        </div>
+        <div className="postBottomRight">
+            <span className="postCommentText">9 comments</span>
+
+            
+            
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<div className="post">
+<div className="postWrapper">
+    <div className="postTop">
+        <div className="postTopLeft">
+            <img className="postProfileImg" src="../src/images/person/1.jpeg" alt="1st post" />
+            <span className="postUsername">Willow Smith</span>
+            <span className="postDate">5 mins ago</span>
+        </div>
+        <div className="postTopRight">
+            <MoreVert />
+        </div>
+    </div>
+    <div className="postCenter">
+        <span className="postText">This is my first post :)</span>
+        <img className="postImg" src="../src/images/post/5.jpeg" alt="Ist Post" />
+    </div>
+    <div className="postBottom">
+        <div className="postBottomLeft">
+            <img className="likeIcon" src="../src/images/like.png" alt="Like icon" onClick={likeHandler} />
+            <img className="likeIcon" src="../src/images/heart.png" alt="Heart icon" onClick={likeHandler}/>
+            <span className="postlikeCounter">{like} people liked</span>
+        </div>
+        <div className="postBottomRight">
+            <span className="postCommentText">9 comments</span>
+
+            
+            
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<div className="post">
+<div className="postWrapper">
+    <div className="postTop">
+        <div className="postTopLeft">
+            <img className="postProfileImg" src="../src/images/person/1.jpeg" alt="1st post" />
+            <span className="postUsername">Willow Smith</span>
+            <span className="postDate">5 mins ago</span>
+        </div>
+        <div className="postTopRight">
+            <MoreVert />
+        </div>
+    </div>
+    <div className="postCenter">
+        <span className="postText">This is my first post :)</span>
+        <img className="postImg" src="../src/images/post/4.jpeg" alt="Ist Post" />
+    </div>
+    <div className="postBottom">
+        <div className="postBottomLeft">
+            <img className="likeIcon" src="../src/images/like.png" alt="Like icon" onClick={likeHandler} />
+            <img className="likeIcon" src="../src/images/heart.png" alt="Heart icon" onClick={likeHandler}/>
+            <span className="postlikeCounter">{like} people liked</span>
+        </div>
+        <div className="postBottomRight">
+            <span className="postCommentText">9 comments</span>
+
+            
+            
+        </div>
+    </div>
+</div>
+</div>
+
+<div className="post">
+<div className="postWrapper">
+    <div className="postTop">
+        <div className="postTopLeft">
+            <img className="postProfileImg" src="../src/images/person/4.jpeg" alt="1st post" />
+            <span className="postUsername">Willow Smith</span>
+            <span className="postDate">5 mins ago</span>
+        </div>
+        <div className="postTopRight">
+            <MoreVert />
+        </div>
+    </div>
+    <div className="postCenter">
+        <span className="postText">This is my first post :)</span>
+        <img className="postImg" src="../src/images/post/2.jpeg" alt="Ist Post" />
+    </div>
+    <div className="postBottom">
+        <div className="postBottomLeft">
+            <img className="likeIcon" src="../src/images/like.png" alt="Like icon" onClick={likeHandler} />
+            <img className="likeIcon" src="../src/images/heart.png" alt="Heart icon" onClick={likeHandler}/>
+            <span className="postlikeCounter">{like} people liked</span>
+        </div>
+        <div className="postBottomRight">
+            <span className="postCommentText">9 comments</span>
+
+            
+            
+        </div>
+    </div>
+</div>
+</div>
+</>
+    )
 }
-
-export default Post;
-
-
