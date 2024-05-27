@@ -6,7 +6,13 @@ const Feed = ({ profile, time, comments, like, description, username }) => {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <img className="postProfileImg" src={profile} alt="1st post" />
+            <img
+              className="postProfileImg"
+              src={profile}
+              alt="1st post"
+              height={"500px"}
+              width={"500px"}
+            />
             <span className="postUsername">{username}</span>
             <span className="postDate">{time}</span>
           </div>
@@ -14,11 +20,6 @@ const Feed = ({ profile, time, comments, like, description, username }) => {
         </div>
         <div className="postCenter">
           <span className="postText">{description}</span>
-          <img
-            className="postImg"
-            src="../src/images/post/10.jpeg"
-            alt="Ist Post"
-          />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">

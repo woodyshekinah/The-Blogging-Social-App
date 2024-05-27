@@ -11,7 +11,7 @@
     {
       "id": 2,
       "profile": "../src/images/person/9.jpeg",
-      "username": "Willow Smith",
+      "username": "Mary",
       "time": "5 mins ago",
       "description": "This is my first post :)",
       "image": "../src/images/post/9.jpeg",
@@ -20,7 +20,7 @@
     {
       "id": 3,
       "profile": "../src/images/person/1.jpeg",
-      "username": "Willow Smith",
+      "username": "Nancy",
       "time": "5 mins ago",
       "description": "This is my first post :)",
       "image": "../src/images/post/5.jpeg",
@@ -29,7 +29,7 @@
     {
       "id": 4,
       "profile": "../src/images/person/1.jpeg",
-      "username": "Willow Smith",
+      "username": "May",
       "time": "5 mins ago",
       "description": "This is my first post :)",
       "image": "../src/images/post/4.jpeg",
@@ -38,7 +38,7 @@
     {
       "id": 5,
       "profile": "../src/images/person/4.jpeg",
-      "username": "Willow Smith",
+      "username": "December",
       "time": "5 mins ago",
       "description": "This is my first post :)",
       "image": "../src/images/post/2.jpeg",
