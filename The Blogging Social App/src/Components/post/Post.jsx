@@ -1,3 +1,4 @@
+
 import React, { useState, createContext, useContext, useReducer, useEffect } from 'react';
 import './post.css';
 
@@ -207,8 +208,27 @@ const BlogPosts = () => {
 export default App;
 
 /* import PropTypes from "prop-types";
+=======
+import PropTypes from "prop-types";
+import { useState } from "react";
 
-const Feed = ({ profile, time, comments, like, description, username }) => {
+const Feed = ({ profile, time, description, username }) => {
+  const [like, setLike] = useState(50);
+  const [isLiked, setIsLiked] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState('');
+
+  const likeHandler = () => {
+    setLike(isLiked ? like + 1 : like + 1);
+  };
+
+  const addCommentHandler = () => {
+    if (newComment.trim() !== '') {
+      setComments([...comments, newComment]);
+      setNewComment('');
+    }
+  }
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -218,13 +238,16 @@ const Feed = ({ profile, time, comments, like, description, username }) => {
               className="postProfileImg"
               src={profile}
               alt="1st post"
-              height={"500px"}
-              width={"500px"}
+              height={"50px"}
+              width={"50px"}
             />
-            <span className="postUsername">{username}</span>
-            <span className="postDate">{time}</span>
-          </div>
+            <div className="postUsername">{username}</div>
+            <div className="postDate">{time}</div>
+          
           <div className="postTopRight">{/* <MoreVert /> </div>
+=======
+          <div className="postTopRight"></div>
+
         </div>
         <div className="postCenter">
           <span className="postText">{description}</span>
@@ -235,18 +258,25 @@ const Feed = ({ profile, time, comments, like, description, username }) => {
               className="likeIcon"
               src="../src/images/like.png"
               alt="Like icon"
-              //   onClick={likeHandler}
-            />
-            <img
-              className="likeIcon"
-              src="../src/images/heart.png"
-              alt="Heart icon"
-              //   onClick={likeHandler}
+              onClick={likeHandler}
             />
             <span className="postlikeCounter">{like} people liked</span>
           </div>
           <div className="postBottomRight">
-            <span className="postCommentText">{comments}</span>
+            <div className="postComments">
+              {comments.map((comment, index) => (
+                <div key={index} className="postComment">
+                  {comment}
+                </div>
+              ))}
+            </div>
+            <input
+              type="text"
+              placeholder="Add a comment..."
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+            />
+            <button onClick={addCommentHandler}>Comment</button>
           </div>
         </div>
       </div>
@@ -255,16 +285,14 @@ const Feed = ({ profile, time, comments, like, description, username }) => {
 };
 
 Feed.propTypes = {
-  posts: PropTypes.array.isRequired,
-  username: PropTypes.string.isRequireds,
-  description: PropTypes.string.isRequireds,
-  like: PropTypes.string.isRequireds,
-  comments: PropTypes.string.isRequireds,
-  time: PropTypes.string.isRequireds,
-  profile: PropTypes.string.isRequireds,
+  username: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  profile: PropTypes.string.isRequired,
 };
 
 export default Feed;
+
 
 // export default function Post() {
 
@@ -431,3 +459,4 @@ export default Feed;
 //     )
 // }
 */
+
