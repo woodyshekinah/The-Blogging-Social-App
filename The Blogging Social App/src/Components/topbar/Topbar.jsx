@@ -4,16 +4,6 @@ import SearchBar from "../../Components/search";
 import { Person } from "@mui/icons-material";
 import BlogsData from "./feed/BlogsData.json";
 
-export default function Topbar() {
-    return (
-        <div className='topbarContainer'>
-            <div className="topbarLeft">
-                <span className='logo'><a href="/">Lamasocial</a></span>
-            </div>
-            <div className="topbarCenter">
-                <div className="searchbar">
-                  <Search />
-=======
 const Topbar = () => {
   const allTags = BlogsData.map((blog) => blog.username);
 
@@ -61,7 +51,6 @@ const Topbar = () => {
                   ) : (
                     <p>No tags found</p>
                   )}
-                  
                 </div>
               </div>
             </div>
