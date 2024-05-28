@@ -27,8 +27,8 @@ const Feed = ({ profile, time, description, username }) => {
               className="postProfileImg"
               src={profile}
               alt="1st post"
-              height={"50px"}
-              width={"50px"}
+              height={"400px"}
+              width={"500px"}
             />
             <div className="postUsername">{username}</div>
             <div className="postDate">{time}</div>

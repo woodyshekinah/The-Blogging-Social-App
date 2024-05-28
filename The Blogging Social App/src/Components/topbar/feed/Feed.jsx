@@ -21,17 +21,7 @@ export default function Feed() {
           />
         ))}
 
-        {/* <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post /> */}
+      
       </div>
     </div>
   );
