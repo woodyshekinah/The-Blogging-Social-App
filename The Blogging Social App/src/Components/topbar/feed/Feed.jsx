@@ -11,13 +11,13 @@ export default function Feed() {
 
         {posts.map((post) => (
           <Post
-            key={post.id}
+      /*       key={post.id}
             profile={post.profile}
             username={post.username}
             time={post.time}
             comments={post.comments}
             like={post.like}
-            description={post.description}
+            description={post.description} */
           />
         ))}
 
