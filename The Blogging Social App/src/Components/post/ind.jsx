@@ -1,44 +1,48 @@
 import PropTypes from "prop-types";
+import "../post/ind.css";
+import { Link } from "react-router-dom";
 
-const Feed = ({ profile, time, comments, like, description, username }) => {
+const Ind = ({ profile, comments, description, username }) => {
   return (
     <div className="post">
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <img
-              className="postProfileImg"
-              src={profile}
-              alt="1st post"
-              height={"500px"}
-              width={"500px"}
-            />
-            <div className="postUsername">{username}</div>
-            <div className="postDate">{time}</div>
+            <Link to={`/ind/${username}`}>
+              <img
+                className="postProfileImg"
+                src={profile}
+                alt="1st post"
+                height={"full"}
+                width={"full"}
+              />
+            </Link>
+            <div className="indUsername">Name: {username}</div>
           </div>
-          <div className="postTopRight">{/* <MoreVert /> */}</div>
+          <div className="indTopRight">{/* <MoreVert /> */}</div>
         </div>
-        <div className="postCenter">
-          <span className="postText">{description}</span>
+        <div className="indCenter">
+          <div className="indText">{description}</div>
         </div>
-        <div className="postBottom">
-          <div className="postBottomLeft">
+        <div className="indBottom">
+          <div className="indBottomLeft">
             <img
-              className="likeIcon"
+              className="indlikeIcon"
               src="../src/images/like.png"
               alt="Like icon"
+              width={"20px"}
               //   onClick={likeHandler}
             />
             <img
-              className="likeIcon"
+              className="indlikeIcon"
               src="../src/images/heart.png"
               alt="Heart icon"
+              width={"20px"}
               //   onClick={likeHandler}
             />
-            <span className="postlikeCounter">{like} people liked</span>
           </div>
-          <div className="postBottomRight">
-            <span className="postCommentText">{comments}</span>
+          <div className="indBottomRight">
+            <div className="indCommentText">{comments}</div>
           </div>
         </div>
       </div>
@@ -46,7 +50,7 @@ const Feed = ({ profile, time, comments, like, description, username }) => {
   );
 };
 
-Feed.propTypes = {
+Ind.propTypes = {
   posts: PropTypes.array.isRequired,
   username: PropTypes.string.isRequireds,
   description: PropTypes.string.isRequireds,
@@ -56,7 +60,7 @@ Feed.propTypes = {
   profile: PropTypes.string.isRequireds,
 };
 
-export default Feed;
+export default Ind;
 
 // export default function Post() {
 

@@ -6,6 +6,7 @@
     align-items: center;
     position: sticky;
     top: 0;
+    position: relative;
 }
 /* App.css */
 
@@ -16,6 +17,39 @@
     margin: 0 auto;
    
 }
+@media (max-width: 768px) {
+  .tag {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    display: none;
+  }
+ 
+  .tag-list{
+    position: relative;
+    flex-direction: column;
+    display: inline-block;
+    background-color: blue;
+  }
+
+
+/* .tag:focus {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+} */
+  /* .tag:focus {
+    display: block;
+  } */
+
+ 
+
+}
+
 
 /* SearchBar Styles */
 .search-bar {
@@ -38,7 +72,7 @@ input {
 
 /* Tag List Styles */
 .tag-list {
-    display: flex;
+    display:flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
