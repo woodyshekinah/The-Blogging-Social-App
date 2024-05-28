@@ -1,48 +1,47 @@
 [
-    {
-      "id": 1,
-      "profile": "https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "username": "Willow",
-      "time": "5 mins ago",
-      "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
-      "image": "../src/images/post/10.jpeg",
-      "comments": "9 comments"
-    },
-    {
-      "id": 2,
-      "profile": "../src/images/person/9.jpeg",
-      "username": "Barbie Girl",
-      "time": "5 mins ago",
-      "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
-      "image": "../src/images/post/9.jpeg",
-      "comments": "9 comments"
-    },
-    {
-      "id": 3,
-      "profile": "../src/images/person/1.jpeg",
-      "username": "Mercy Kate",
-      "time": "5 mins ago",
-      "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
-      "image": "../src/images/post/5.jpeg",
-      "comments": "9 comments"
-    },
-    {
-      "id": 4,
-      "profile": "https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "username": "Ninema",
-      "time": "5 mins ago",
-      "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
-      "image": "../src/images/post/4.jpeg",
-      "comments": "9 comments"
-    },
-    {
-      "id": 5,
-      "profile": "../src/images/person/4.jpeg",
-      "username": "December",
-      "time": "5 mins ago",
-      "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
-      "image": "../src/images/post/2.jpeg",
-      "comments": "9 comments"
-    }
-  ]
-
+  {
+    "id": 1,
+    "profile": "https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "username": "Willow",
+    "time": "5 mins ago",
+    "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
+    "image": "../src/images/post/10.jpeg",
+    "comments": "9 comments"
+  },
+  {
+    "id": 2,
+    "profile": "../src/images/person/9.jpeg",
+    "username": "Barbie Girl",
+    "time": "5 mins ago",
+    "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
+    "image": "../src/images/post/9.jpeg",
+    "comments": "9 comments"
+  },
+  {
+    "id": 3,
+    "profile": "../src/images/person/1.jpeg",
+    "username": "Mercy Kate",
+    "time": "5 mins ago",
+    "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
+    "image": "../src/images/post/5.jpeg",
+    "comments": "9 comments"
+  },
+  {
+    "id": 4,
+    "profile": "https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "username": "Ninema",
+    "time": "5 mins ago",
+    "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
+    "image": "../src/images/post/4.jpeg",
+    "comments": "9 comments"
+  },
+  {
+    "id": 5,
+    "profile": "../src/images/person/4.jpeg",
+    "username": "December",
+    "time": "5 mins ago",
+    "description": "Excepteur consectetur ullamco irure veniam incididunt duis qui nisi. Sunt dolore et aliquip sit in voluptate. Irure nostrud quis laboris est anim culpa amet enim commodo ut. Id reprehenderit aute quis minim. Ullamco do irure aliqua consequat consequat consectetur incididunt dolore. Labore excepteur aliquip nulla amet anim labore exercitation magna commodo officia elit elit. Laborum eu exercitation mollit officia non duis magna.",
+    "image": "../src/images/post/2.jpeg",
+    "comments": "9 comments"
+  }
+]
