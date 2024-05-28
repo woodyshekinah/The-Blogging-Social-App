@@ -85,7 +85,7 @@ const Topbar = () => {
             </div>
             <a href="/login">
               <img
-                src="../src/images/person/1.jpeg"
+                src="https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&w=600"
                 alt="an image of a girl"
                 className="topbarImg"
               />
